@@ -1,0 +1,105 @@
+.subscription-selection-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.subscription-selection-container h2 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.subscription-selection-container p {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.subscription-options {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.subscription-option {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 25px;
+  width: calc(50% - 20px); /* Adjust width for two columns with gap */
+  min-width: 250px; /* Minimum width before wrapping */
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.subscription-option:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.subscription-option h3 {
+  color: #007bff; /* Or your primary color */
+  margin-bottom: 10px;
+}
+
+.subscription-option p {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.subscription-option ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 25px;
+  text-align: left;
+  color: #444;
+}
+
+.subscription-option ul li {
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.subscription-option ul li::before {
+  content: '✔'; /* Checkmark symbol */
+  color: #28a745; /* Green color for checkmark */
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+
+.subscription-option button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.subscription-option button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .subscription-options {
+    flex-direction: column;
+    align-items: center;
+  }
+  .subscription-option {
+    width: 90%; /* Take more width on small screens */
+    margin-bottom: 20px; /* Add space between stacked options */
+  }
+}

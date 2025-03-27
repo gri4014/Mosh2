@@ -1,22 +1,20 @@
-import { Router, Request, Response } from 'express';
+import { Router } from 'express'; // Request, Response might not be needed if using controllers
 import { authMiddleware } from '../middleware/authMiddleware';
+import { getUserProfile, updateSubscription } from '../controllers/userController'; // Import controllers
 
 const userRouter = Router();
 
 // Apply auth middleware to all routes in this router
+// Apply auth middleware to all routes in this router
+// Note: If some user routes shouldn't be protected, apply middleware individually
 userRouter.use(authMiddleware);
 
-// Example protected route: Get current user info
-userRouter.get('/me', (req: Request, res: Response) => {
-  // Access user ID attached by the middleware
-  const userId = req.user?.userId;
-  if (!userId) {
-    // This should theoretically not happen if middleware is working
-    return res.status(401).json({ message: 'Unauthorized: User ID not found' });
-  }
-  // In a real scenario, you might fetch user details from the DB using userId
-  res.json({ message: `Protected route accessed by user ${userId}`, userId });
-});
+// Route to get the current user's profile (including subscription)
+userRouter.get('/me', getUserProfile);
+
+// Route to update the user's subscription tier
+userRouter.put('/me/subscribe', updateSubscription);
+
 
 // Add other user-related routes here (e.g., update settings)
 

@@ -56,6 +56,7 @@ model User {
   id                 String             @id @default(uuid())
   email              String             @unique
   password           String // Hashed password
+  subscriptionTier   SubscriptionTier?  // Added field for subscription tier
   createdAt          DateTime           @default(now()) @map("created_at")
   instagramAccounts  InstagramAccount[]
   subscriptions      Subscription[]
