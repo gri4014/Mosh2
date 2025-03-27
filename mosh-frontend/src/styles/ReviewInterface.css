@@ -1,0 +1,88 @@
+.review-container {
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.review-container h3 {
+  margin-top: 0;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.review-container.error {
+  color: #dc3545;
+  border-color: #dc3545;
+  background-color: #f8d7da;
+}
+
+.post-review-item {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #fff;
+}
+
+.post-review-item h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.post-images {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.image-placeholder {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #e9ecef;
+  border: 1px solid #ced4da;
+  border-radius: 3px;
+  margin-right: 5px;
+  font-size: 0.9em;
+  color: #495057;
+}
+
+.post-hashtags {
+  margin-top: 10px;
+  font-style: italic;
+  color: #6c757d;
+  font-size: 0.9em;
+}
+
+.post-actions {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px dashed #eee;
+}
+
+.post-actions button {
+  padding: 8px 15px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.approve-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.approve-button:hover {
+  background-color: #218838;
+}
+
+.edit-button {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.edit-button:hover {
+  background-color: #e0a800;
+}

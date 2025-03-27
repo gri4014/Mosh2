@@ -64,3 +64,51 @@ export const getUserProfile = async (req: AuthenticatedRequest, res: Response): 
         res.status(500).json({ message: 'Failed to fetch user profile' });
     }
 };
+
+// Controller to update user settings
+export const updateUserSettings = async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+    const userId = req.user?.userId;
+    // Expecting settings like { reviewModeEnabled: true/false } in the body
+    const { reviewModeEnabled } = req.body;
+
+    if (!userId) {
+        res.status(401).json({ message: 'Unauthorized' });
+        return;
+    }
+
+    // Basic validation: check if reviewModeEnabled is a boolean if provided
+    if (reviewModeEnabled !== undefined && typeof reviewModeEnabled !== 'boolean') {
+        res.status(400).json({ message: 'Invalid value for reviewModeEnabled. Must be a boolean.' });
+        return;
+    }
+
+    // Prepare settings object for the service
+    const settingsToUpdate: { reviewModeEnabled?: boolean } = {};
+    if (reviewModeEnabled !== undefined) {
+        settingsToUpdate.reviewModeEnabled = reviewModeEnabled;
+    }
+
+    // Check if there's actually anything to update
+    if (Object.keys(settingsToUpdate).length === 0) {
+        res.status(400).json({ message: 'No valid settings provided for update.' });
+        return;
+    }
+
+    try {
+        const updatedUser = await userService.updateUserSettings(userId, settingsToUpdate);
+        res.status(200).json({ message: 'Settings updated successfully', user: updatedUser });
+    } catch (error) {
+        console.error('Error updating user settings:', error);
+        if (error instanceof Error) {
+            if (error.message.includes('User not found')) {
+                res.status(404).json({ message: 'User not found' });
+            } else if (error.message.includes('Invalid value')) {
+                res.status(400).json({ message: error.message }); // Pass validation error message
+            } else {
+                res.status(500).json({ message: 'Failed to update settings' });
+            }
+        } else {
+            res.status(500).json({ message: 'An unexpected error occurred while updating settings' });
+        }
+    }
+};

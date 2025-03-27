@@ -69,3 +69,29 @@
   align-items: center;
   cursor: pointer;
 }
+
+/* Styles for disabled button */
+.settings-section button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Styles for Save Settings section */
+.save-section {
+  display: flex;
+  align-items: center;
+  margin-top: 20px; /* Add some space above the save button */
+}
+
+.save-message {
+  margin-left: 15px;
+  font-size: 0.9em;
+}
+
+.save-message.success {
+  color: #28a745; /* Green for success */
+}
+
+.save-message.error {
+  color: #dc3545; /* Red for error */
+}

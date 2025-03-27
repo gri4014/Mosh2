@@ -1,6 +1,6 @@
 import { Router } from 'express'; // Request, Response might not be needed if using controllers
 import { authMiddleware } from '../middleware/authMiddleware';
-import { getUserProfile, updateSubscription } from '../controllers/userController'; // Import controllers
+import { getUserProfile, updateSubscription, updateUserSettings } from '../controllers/userController'; // Import controllers
 
 const userRouter = Router();
 
@@ -15,7 +15,10 @@ userRouter.get('/me', getUserProfile);
 // Route to update the user's subscription tier
 userRouter.put('/me/subscribe', updateSubscription);
 
+// Route to update user settings (like reviewModeEnabled)
+userRouter.put('/me', updateUserSettings);
 
-// Add other user-related routes here (e.g., update settings)
+
+// Add other user-related routes here
 
 export default userRouter;

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import api from '../services/api'; // Import API service
+import apiClient from '../services/api'; // Import apiClient (default)
 import { useNavigate, Link } from 'react-router-dom'; // Import Link, For potential redirects on error
+import ReviewInterface from './ReviewInterface'; // Import the review component
+import PostList from './PostList'; // Import the new PostList component
 // Optional: import './../styles/Dashboard.css'; // If we add styles
 
 function Dashboard() {
@@ -21,9 +23,10 @@ function Dashboard() {
           return;
         }
 
-        const response = await api.get('/users/me', {
+        // Use apiClient instead of api
+        const response = await apiClient.get('/users/me', {
           headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}` // Assuming token is stored as 'token', not 'userToken' based on previous code
           }
         });
         setUserData(response.data);
@@ -92,6 +95,23 @@ function Dashboard() {
       <button onClick={handleLogout} style={{ marginLeft: '10px', backgroundColor: '#dc3545' }}>
         Logout
       </button>
+
+      {/* --- Scheduled Posts Section --- */}
+      <div style={{ marginTop: '20px', borderTop: '1px solid #ccc', paddingTop: '20px' }}>
+        <PostList />
+      </div>
+      {/* --- End Scheduled Posts Section --- */}
+
+
+      {/* --- Post Review Section --- */}
+      {/* Conditionally render based on the user's setting */}
+      {userData?.reviewModeEnabled && (
+        <div style={{ marginTop: '20px', borderTop: '1px solid #ccc', paddingTop: '20px' }}>
+           <ReviewInterface />
+        </div>
+      )}
+      {/* --- End Post Review Section --- */}
+
     </div>
   );
 }

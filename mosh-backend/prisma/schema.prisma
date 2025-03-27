@@ -57,6 +57,7 @@ model User {
   email              String             @unique
   password           String // Hashed password
   subscriptionTier   SubscriptionTier?  // Added field for subscription tier
+  reviewModeEnabled  Boolean            @default(false) @map("review_mode_enabled") // Added for post review setting
   createdAt          DateTime           @default(now()) @map("created_at")
   instagramAccounts  InstagramAccount[]
   subscriptions      Subscription[]

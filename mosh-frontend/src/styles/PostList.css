@@ -1,0 +1,104 @@
+.post-list-container {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.post-list-container h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.post-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5px;
+  border-bottom: 1px solid #eee;
+}
+
+.post-list-item:last-child {
+  border-bottom: none;
+}
+
+.post-title {
+  font-weight: bold;
+  flex-grow: 1;
+  margin-right: 15px;
+}
+
+.post-schedule {
+  font-size: 0.9em;
+  color: #666;
+  margin-right: 15px;
+  min-width: 180px; /* Adjust as needed */
+  text-align: right;
+}
+
+.post-status {
+  font-size: 0.9em;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+  min-width: 100px; /* Ensure consistent width */
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+}
+
+/* --- Status Indicator Styles --- */
+/* Default / Unknown */
+.status-unknown {
+  background-color: #888; /* Grey */
+}
+
+/* Scheduled */
+.status-scheduled {
+  background-color: #007bff; /* Blue */
+}
+
+/* Pending Review */
+.status-pending_review {
+  background-color: #ffc107; /* Yellow/Orange */
+  color: #333; /* Darker text for yellow */
+}
+
+/* Approved (Ready to publish) */
+.status-approved {
+  background-color: #28a745; /* Green */
+}
+
+/* Publishing (In progress) */
+.status-publishing {
+  background-color: #17a2b8; /* Teal/Cyan */
+}
+
+/* Published */
+.status-published {
+  background-color: #6c757d; /* Grey */
+}
+
+/* Failed */
+.status-failed {
+  background-color: #dc3545; /* Red */
+}
+
+/* Cancelled */
+.status-cancelled {
+  background-color: #adb5bd; /* Light Grey */
+  color: #333;
+}
+
+.error-message {
+  color: #dc3545; /* Red */
+  font-weight: bold;
+}
